@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Школьная олимпиада по математике - Школа №13</title>
+    <style>
+        /* СКОПИРУЙТЕ ВЕСЬ CSS ИЗ ВАШЕГО ОСНОВНОГО ФАЙЛА */
+        /* Base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #800000;
+            --secondary: #FFDAB9;
+            --accent: #32CD32;
+            --light: #FFFFFF;
+            --dark: #343a40;
+            --gray: #6c757d;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: var(--light);
+        }
+        
+        /* ДОБАВЬТЕ ЭТИ СТИЛИ ДЛЯ СТРАНИЦЫ НОВОСТИ */
+        .news-article {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem auto;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            max-width: 800px;
+        }
+        
+        .news-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .news-date {
+            color: var(--gray);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .news-title {
+            font-size: 2rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .news-content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .news-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .news-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            border-radius: 6px;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            margin-top: 2rem;
+            transition: background-color 0.3s;
+        }
+        
+        .back-btn:hover {
+            background: #28a428;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header (такой же как в основном файле) -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Школа <span>№13</span></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Полная новость -->
+    <section class="container">
+        <article class="news-article">
+            <div class="news-header">
+                <div class="news-date">15 октября 2023</div>
+                <h1 class="news-title">Школьная олимпиада по математике</h1>
+            </div>
+            
+            <div class="news-content">
+                <p>В этом месяце состоится ежегодная олимпиада по математике для учащихся 9-11 классов. Это прекрасная возможность проявить свои знания и способности!</p>
+                
+                <p>Олимпиада пройдет в три этапа:</p>
+                <ul>
+                    <li><strong>Первый этап</strong> - 25 октября (школьный тур)</li>
+                    <li><strong>Второй этап</strong> - 15 ноября (районный тур)</li>
+                    <li><strong>Финальный этап</strong> - 5 декабря (городской тур)</li>
+                </ul>
+                
+                <p>Зал открыт быстрее ожидаемых сроков, за что спасибо работниками</p>
+                
+                <!-- Галерея фотографий -->
+                <div class="news-gallery">
+                    <div class="news-image">Фото подготовки к олимпиаде</div>
+                    <div class="news-image">Фото прошлогодних победителей</div>
+                    <div class="news-image">Фото учебных материалов</div>
+                </div>
+                
+                <p>Победители олимпиады получат грамоты и возможность представлять школу на региональных соревнованиях. Желаем всем участникам удачи!</p>
+            </div>
+            
+            <!-- Кнопка назад -->
+            <a href="index.html" class="back-btn">← Назад к новостям</a>
+        </article>
+    </section>
+</body>
+</html>
