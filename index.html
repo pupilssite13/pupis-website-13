@@ -756,41 +756,108 @@
     </footer>
 
    <script>
-    // САМАЯ ПРОСТАЯ ФУНКЦИЯ ДЛЯ ТАБОВ
+    // Voting system
+    let votes = {
+        "Современные исполнители": 0,
+        "Вечер 80-х": 0,
+        'Тема: "00-ые"': 0,
+        "Хиты всех времен": 0
+    };
+
+    // ПРОСТАЯ ФУНКЦИЯ ДЛЯ ПЕРЕКЛЮЧЕНИЯ ВКЛАДОК
     function openTab(tabName) {
-        console.log('Пытаюсь открыть:', tabName);
+        console.log('Opening tab:', tabName);
         
-        // Скрываем все вкладки
-        document.getElementById('news-tab').style.display = 'none';
-        document.getElementById('participation-tab').style.display = 'none';
+        // Скрыть все вкладки
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.style.display = 'none';
+        });
         
-        // Показываем нужную вкладку
-        document.getElementById(tabName).style.display = 'block';
+        // Показать выбранную вкладку
+        const selectedTab = document.getElementById(tabName);
+        if (selectedTab) {
+            selectedTab.style.display = 'block';
+        }
         
-        // Обновляем кнопки
-        document.querySelectorAll('.tab-btn').forEach(btn => {
+        // Убрать активность со всех кнопок
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        tabButtons.forEach(btn => {
             btn.classList.remove('active');
         });
-        event.target.classList.add('active');
-    }
-
-    // ПРОСТАЯ ФУНКЦИЯ ГОЛОСОВАНИЯ
-    function vote() {
-        alert('Спасибо за ваш голос! Результаты будут позже.');
-    }
-
-    // ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
-    document.addEventListener('DOMContentLoaded', function() {
-        console.log('Страница загружена!');
         
-        // Делаем все карточки кликабельными
+        // Сделать активной нажатую кнопку
+        const activeButton = document.querySelector(`[data-tab="${tabName}"]`);
+        if (activeButton) {
+            activeButton.classList.add('active');
+        }
+    }
+
+    // Voting function
+    function vote() {
+        const selectedOption = document.querySelector('input[name="partyTheme"]:checked');
+        
+        if (!selectedOption) {
+            alert('Пожалуйста, выберите вариант для голосования');
+            return;
+        }
+        
+        // Update vote count
+        votes[selectedOption.value]++;
+        
+        // Calculate percentages
+        const totalVotes = Object.values(votes).reduce((a, b) => a + b, 0);
+        
+        // Update results display
+        document.getElementById('result1').textContent = Math.round((votes["Современные исполнители"] / totalVotes) * 100) + '%';
+        document.getElementById('bar1').style.width = (votes["Современные исполнители"] / totalVotes) * 100 + '%';
+        
+        document.getElementById('result2').textContent = Math.round((votes["Вечер 80-х"] / totalVotes) * 100) + '%';
+        document.getElementById('bar2').style.width = (votes["Вечер 80-х"] / totalVotes) * 100 + '%';
+        
+        document.getElementById('result3').textContent = Math.round((votes['Тема: "00-ые"'] / totalVotes) * 100) + '%';
+        document.getElementById('bar3').style.width = (votes['Тема: "00-ые"'] / totalVotes) * 100 + '%';
+        
+        document.getElementById('result4').textContent = Math.round((votes["Хиты всех времен"] / totalVotes) * 100) + '%';
+        document.getElementById('bar4').style.width = (votes["Хиты всех времен"] / totalVotes) * 100 + '%';
+        
+        // Show results
+        document.getElementById('voteResult').style.display = 'block';
+        
+        // Thank you message
+        alert('Спасибо за ваш голос!');
+    }
+
+    // Initialize when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        console.log('Page loaded successfully!');
+        
+        // Убедимся что первая вкладка активна при загрузке
+        openTab('news-tab');
+        
+        // Обработчики для карточек новостей
         document.querySelectorAll('.news-card').forEach(card => {
-            card.onclick = function() {
-                const link = this.querySelector('a');
-                if (link) {
+            card.addEventListener('click', function() {
+                const link = this.querySelector('a.read-more');
+                if (link && link.href) {
                     window.location.href = link.href;
                 }
-            };
+            });
+        });
+
+        // Обработчики для кнопок выбора голосования
+        document.querySelectorAll('.vote-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const radio = this.querySelector('input[type="radio"]');
+                if (radio) {
+                    radio.checked = true;
+                    // Visual feedback
+                    document.querySelectorAll('.vote-option').forEach(opt => {
+                        opt.style.backgroundColor = '';
+                    });
+                    this.style.backgroundColor = '#f8f9fa';
+                }
+            });
         });
     });
 </script>
