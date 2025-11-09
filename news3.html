@@ -102,17 +102,23 @@
             margin: 2rem 0;
         }
         
-        .news-image {
-            width: 100%;
-            height: 200px;
-            background-color: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            border-radius: 6px;
-        }
+       .news-img {
+    height: 180px; /* Фиксированная высота */
+    background-color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    overflow: hidden; /* Обрезаем лишнее */
+}
+
+.news-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Сохраняет пропорции, обрезая лишнее */
+    object-position: center; /* Центрируем изображение */
+}
         
         .back-btn {
             display: inline-block;
@@ -129,6 +135,13 @@
         .back-btn:hover {
             background: #28a428;
         }
+
+@media (max-width: 768px) {
+    .news-img {
+        height: 150px; /* Чуть меньше на мобильных */
+    }
+}
+		
     </style>
 </head>
 <body>
@@ -170,3 +183,4 @@
 </body>
 
 </html>
+
