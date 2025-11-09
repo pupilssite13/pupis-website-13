@@ -96,28 +96,38 @@
         }
         
         .news-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .news-img {
-    height: 180px; /* Фиксированная высота */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+/* ИСПРАВЛЯЕМ ЭТОТ СТИЛЬ - добавляем новый класс для галереи */
+.news-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Старый стиль оставляем для карточек на главной */
+.news-img {
+    height: 180px;
     background-color: var(--primary);
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-weight: bold;
-    overflow: hidden; /* Обрезаем лишнее */
+    overflow: hidden;
 }
 
 .news-img img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Сохраняет пропорции, обрезая лишнее */
-    object-position: center; /* Центрируем изображение */
+    object-fit: cover;
+    object-position: center;
 }
         
         .back-btn {
@@ -136,9 +146,18 @@
             background: #28a428;
         }
 
-        @media (max-width: 768px) {
+        /* Мобильная версия */
+@media (max-width: 768px) {
     .news-img {
-        height: 150px; /* Чуть меньше на мобильных */
+        height: 150px;
+    }
+    
+    .news-image {
+        height: 150px;
+    }
+    
+    .news-gallery {
+        grid-template-columns: 1fr;
     }
 }
         
@@ -199,6 +218,7 @@
 </body>
 
 </html>
+
 
 
 
