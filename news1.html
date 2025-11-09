@@ -95,29 +95,25 @@
             margin-bottom: 1.5rem;
         }
         
-        .news-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        
-        .news-img {
-    height: 180px; /* Фиксированная высота */
-    background-color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    overflow: hidden; /* Обрезаем лишнее */
+        /* Стили для галереи на странице новости */
+.news-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
 }
 
-.news-img img {
+.news-image {
     width: 100%;
-    height: 100%;
-    object-fit: cover; /* Сохраняет пропорции, обрезая лишнее */
-    object-position: center; /* Центрируем изображение */
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.news-image:hover {
+    transform: scale(1.02);
 }
         
         .back-btn {
@@ -154,8 +150,13 @@
         }
 
         @media (max-width: 768px) {
-    .news-img {
-        height: 150px; /* Чуть меньше на мобильных */
+    .news-gallery {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .news-image {
+        height: 180px;
     }
 }
     </style>
@@ -201,6 +202,7 @@
 </body>
 
 </html>
+
 
 
 
