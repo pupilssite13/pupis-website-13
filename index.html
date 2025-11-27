@@ -593,24 +593,31 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="tabs-header">
-    <button class="tab-btn active" data-tab="news-tab">Новости</button>
-    <a href="participation-tab.html" class="tab-btn">Участие в жизни школы</a>
-    <a href="memberspage.html" class="tab-btn">Состав совета</a>
-</div>
-    </section>
+   <!-- Hero Section -->
+<section class="hero">
+    <div class="container">
+        <h1>Добро пожаловать на сайт совета учеников нашей школы</h1>
+        <p>Здесь вы найдете последние новости, события и возможность участвовать в школьной жизни</p>
+    </div>
+</section>
 
-    <!-- Main Content with Tabs -->
+<!-- Main Content with Tabs -->
 <section id="main-content">
     <div class="container">
         <div class="tabs-container">
-            <!-- В разделе tabs-header замените кнопку на ссылку -->
-	<div class="tabs-header">
-	    <button class="tab-btn active" data-tab="news-tab">Новости</button>
-	    <a href="participation-tab.html" class="tab-btn">Участие в жизни школы</a>
-	</div>
+            <div class="tabs-header">
+                <button class="tab-btn active" data-tab="news-tab">Новости</button>
+                <a href="participation-tab.html" class="tab-btn">Участие в жизни школы</a>
+                <a href="memberspage.html" class="tab-btn">Состав совета</a>
+            </div>
+            
+            <!-- Содержимое вкладок -->
+            <div id="news-tab" class="tab-content active">
+                <!-- Ваши новости здесь -->
+            </div>
+        </div>
+    </div>
+</section>
             
             <!-- News Tab -->
             <div id="news-tab" class="tab-content active">
@@ -876,6 +883,7 @@
 </script>
 </body>
 </html>
+
 
 
 
