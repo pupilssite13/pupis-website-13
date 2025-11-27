@@ -1,4 +1,7 @@
 # pupis-website-13
+
+https://vk.com/away.php?to=https%3A%2F%2Fpupilssite13.github.io%2Fpupis-website-13%2F&utf=1
+
 A site for 13th school Velikiy Novgorod
 Привет если ты читаешь это, то наверняка заинтересован в принципе работы этого сайта или же один из тех, кто будет обслуживать данный сайт. Сначала памятки для второй , но не по важности, категории. 
 
