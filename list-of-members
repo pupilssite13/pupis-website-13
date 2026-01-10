@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Состав ученического совета – Школа №13</title>
+    <style>
+        /* ===== СКОПИРОВАННЫЕ БАЗОВЫЕ СТИЛИ ИЗ index.html ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .vote-btn, .participation-btn, .tab-btn, .news-card, .vote-option {
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
+                cursor: pointer;
+            }
+
+            .tab-btn {
+                min-height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .vote-option {
+                min-height: 60px;
+                display: flex;
+                align-items: center;
+                padding: 15px;
+                margin-bottom: 10px;
+            }
+
+            .vote-option input[type="radio"] {
+                transform: scale(1.2);
+                margin-right: 15px;
+            }
+        }
+
+        button, a, .news-card, .vote-option {
+            cursor: pointer;
+        }
+
+        * {
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .news-content, .participation-card p, .vote-title, .members-description, .member-comment {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
+
+        :root {
+            --primary: #800000;
+            --secondary: #FFDAB9;
+            --accent: #32CD32;
+            --light: #FFFFFF;
+            --dark: #343a40;
+            --gray: #6c757d;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        .news-card {
+            position: relative;
+        }
+
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 44px;
+            padding: 10px 20px;
+            background: var(--primary);
+            color: white !important;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-decoration: none;
+        }
+
+        .read-more:hover {
+            background: #600000;
+            transform: translateY(-2px);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            .tab-btn, .vote-btn, .participation-btn {
+                min-height: 60px;
+                font-size: 18px;
+                padding: 15px 20px;
+            }
+
+            .news-card {
+                min-height: 100px;
+                padding: 15px;
+            }
+
+            button, a, .news-card {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+        }
+
+        .vote-btn, .participation-btn, .back-btn, .tab-btn {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .vote-btn:hover, .participation-btn:hover, .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .vote-btn:active, .participation-btn:active, .back-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: var(--light);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        nav ul li a:active {
+            color: var(--accent);
+            transform: scale(0.95);
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: 2rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--dark);
+            border-radius: 2px;
+        }
+
+        .tabs-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .tabs-header {
+            display: flex;
+            background: var(--light);
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .tab-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+            color: var(--gray);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tab-btn.active {
+            background: white;
+            color: var(--primary);
+            border-bottom: 3px solid var(--accent);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #f0f0f0;
+            color: var(--dark);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 2rem;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .participation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .participation-card {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .participation-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .participation-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .participation-btn {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .participation-btn:hover {
+            background: #28a428;
+        }
+
+        @media (max-width: 768px) {
+            .tabs-header {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                padding: 0.75rem 1rem;
+            }
+
+            .voting-container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .vote-btn, .participation-btn, .tab-btn {
+                min-height: 44px;
+                padding: 12px 20px;
+            }
+
+            nav ul li a {
+                padding: 10px 15px;
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+                padding: 0 10px;
+            }
+
+            .hero p {
+                font-size: 1rem;
+                padding: 0 10px;
+            }
+
+            .tab-btn {
+                padding: 1rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== СТИЛИ ДЛЯ СТРАНИЦЫ СОСТАВА ===== */
+
+        .members-description {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 2rem auto;
+            color: var(--gray);
+        }
+
+        .member-cloud {
+            background: white;
+            border-radius: 24px;
+            border: 2px solid var(--primary);
+            padding: 16px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .member-photo {
+            width: 96px;
+            height: 96px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            object-fit: cover;
+            background-color: #e0e0e0;
+        }
+
+        .member-info {
+            flex: 1;
+        }
+
+        .member-name {
+            font-weight: 600;
+            margin: 0 0 4px 0;
+        }
+
+        .member-separator {
+            border: none;
+            border-top: 1px solid var(--primary);
+            margin: 4px 0 8px 0;
+        }
+
+        .member-role {
+            font-size: 14px;
+            font-weight: 500;
+            margin: 0 0 6px 0;
+        }
+
+        .member-comment {
+            font-size: 14px;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .past-years {
+            margin-top: 32px;
+            padding-top: 16px;
+            border-top: 1px solid #ddd;
+        }
+
+        .past-years h3 {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        .past-years ul {
+            margin: 0;
+            padding-left: 18px;
+        }
+
+        .past-years a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .past-years a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            margin: 0 0.5rem;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .member-cloud {
+                flex-direction: row;
+            }
+
+            .member-photo {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">Школа <span>№13</span></div>
+                <nav>
+                    <ul>
+                        <li><a href="https://sh13-velikij-novgorod-r49.gosweb.gosuslugi.ru/">О школе</a></li>
+                        <li><a href="https://t.me/Fieldtestedclothe">Разработчик</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section (адаптирован под состав) -->
+    <section class="hero">
+        <div class="container">
+            <h1>Состав ученического совета</h1>
+            <p>Здесь вы найдете актуальную информацию об участниках ученического совета нашей школы.</p>
+        </div>
+    </section>
+
+    <!-- Main Content with Tabs -->
+    <section id="main-content">
+        <div class="container">
+            <div class="tabs-container">
+                <div class="tabs-header">
+                    <a href="index.html" class="tab-btn">Новости</a>
+                    <a href="participation-tab.html" class="tab-btn">Участие в жизни школы</a>
+                    <button class="tab-btn active" data-tab="members-tab">Состав совета</button>
+                </div>
+
+                <!-- TAB: Состав совета -->
+                <div id="members-tab" class="tab-content active">
+                    <h2 class="section-title">Текущий состав</h2>
+
+                    <p class="members-description">
+                        На этой странице представлен текущий состав ученического совета школы №13.
+                        Состав обновляется примерно раз в два года по мере смены участников с 8 по 11 классы.
+                    </p>
+
+                    <!-- Примеры облаков. Здесь ты сам подставишь фотки, ФИО, должности и комментарии -->
+                    <article class="member-cloud">
+                        <img class="member-photo"
+                             src="Images/members/member1.jpg"
+                             alt="Фотография участника совета">
+                        <div class="member-info">
+                            <p class="member-name">Фамилия Имя Отчество</p>
+                            <hr class="member-separator">
+                            <p class="member-role">Председатель ученического совета</p>
+                            <p class="member-comment">
+                                Краткий комментарий ученика: за что отвечает в совете,
+                                какие цели ставит перед собой и чего хочет добиться для школы.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="member-cloud">
+                        <img class="member-photo"
+                             src="Images/members/member2.jpg"
+                             alt="Фотография участника совета">
+                        <div class="member-info">
+                            <p class="member-name">Фамилия Имя Отчество</p>
+                            <hr class="member-separator">
+                            <p class="member-role">Заместитель председателя по информации</p>
+                            <p class="member-comment">
+                                Комментарий: отвечает за объявления, новости, социальные сети
+                                и помогает рассказывать о жизни школы.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="member-cloud">
+                        <img class="member-photo"
+                             src="Images/members/member3.jpg"
+                             alt="Фотография участника совета">
+                        <div class="member-info">
+                            <p class="member-name">Фамилия Имя Отчество</p>
+                            <hr class="member-separator">
+                            <p class="member-role">Куратор культурно-массового направления</p>
+                            <p class="member-comment">
+                                Комментарий: организует концерты, праздники, творческие конкурсы
+                                и помогает создавать атмосферу в школе.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Копируй article.member-cloud столько раз, сколько нужно участников -->
+
+                    <div class="past-years">
+                        <h3>Состав прошлых лет</h3>
+                        <p class="members-description">
+                            В будущем здесь появятся ссылки на составы ученического совета за предыдущие учебные годы.
+                        </p>
+                        <ul>
+                            <li><a href="#">Состав 2023–2024 учебного года</a></li>
+                            <li><a href="#">Состав 2021–2022 учебного года</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Других tab-content на этой странице не делаем: новости и участие – на своих html -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (как в index.html) -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Школа №13</div>
+                <div class="footer-links">
+                    <a href="https://sh13-velikij-novgorod-r49.gosweb.gosuslugi.ru/">О школе</a>
+                    <a href="https://vk.com/club211597998">Группа ВК</a>
+                </div>
+                <div class="copyright">© 2002 Школа №13. Все права защищены.</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // На этой странице нужен только обработчик карточек (если хочешь клики) и базовый init
+        document.addEventListener('DOMContentLoaded', function() {
+            // Для единообразия: активный таб уже показан через класс active в верстке
+            console.log('Members page loaded');
+        });
+    </script>
+</body>
+</html>
