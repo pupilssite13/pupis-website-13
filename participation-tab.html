@@ -27,7 +27,6 @@
                 align-items: center;
                 justify-content: center;
             }
-    
         }
 
         /* Гарантируем, что все интерактивные элементы кликабельны */
@@ -75,7 +74,7 @@
             padding: 0 15px;
         }
 
-        /* Делаем ссылки "Читать далее" более заметными */
+        /* Делаем ссылки "Читать далее" более заметными (если понадобятся) */
         .read-more {
             display: inline-flex;
             align-items: center;
@@ -88,6 +87,7 @@
             font-weight: 600;
             transition: all 0.3s ease;
             margin-top: 1rem;
+            text-decoration: none;
         }
 
         .read-more:hover {
@@ -96,39 +96,17 @@
             text-decoration: none;
         }
 
-        /* На мобильных делаем карточки более отзывчивыми */
-        @media (max-width: 768px) {
-            .tab-btn, .vote-btn, .participation-btn {
-                min-height: 60px;
-                font-size: 18px;
-                padding: 15px 20px;
-            }
-            
-            .news-card {
-                min-height: 100px;
-                padding: 15px;
-            }
-            
-            /* Гарантируем что все кликабельно */
-            button, a, .news-card {
-                cursor: pointer;
-                -webkit-tap-highlight-color: transparent;
-            }
-        }
-
         /* Эффекты для кнопок */
         .vote-btn, .participation-btn, .back-btn, .tab-btn {
             transition: all 0.3s ease;
             cursor: pointer;
         }
 
-        /* При наведении */
         .vote-btn:hover, .participation-btn:hover, .back-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }	
 
-        /* При нажатии */
         .vote-btn:active, .participation-btn:active, .back-btn:active {
             transform: translateY(0);
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
@@ -166,7 +144,6 @@
             margin-left: 1.5rem;
         }
         
-        /* Эффект для ссылок */
         nav ul li a {
             transition: all 0.3s ease;
             position: relative;
@@ -229,8 +206,7 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            406
-			;
+            background: var(--dark);
             border-radius: 2px;
         }
         
@@ -276,21 +252,16 @@
         }
 
         .tab-content {
-            display: none;
             padding: 2rem;
-        }
-
-        .tab-content.active {
-            display: block;
         }
 
         /* Participation section */
         .participation-grid {
-   	  display: flex;
-   	  justify-content: center;
-   	  align-items: center;
-   	  margin-bottom: 3rem;
-	}
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
 
         .participation-card {
             background: white;
@@ -312,6 +283,11 @@
             color: var(--dark);
         }
 
+        .participation-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
         .participation-btn {
             background: var(--accent);
             color: white;
@@ -327,23 +303,7 @@
             background: #28a428;
         }
 
-        .back-btn {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 500;
-            transition: background-color 0.3s;
-            margin-bottom: 2rem;
-        }
-
-        .back-btn:hover {
-            background: #600000;
-        }
-
-        /* Responsive for tabs */
+        /* Responsive */
         @media (max-width: 768px) {
             .tabs-header {
                 flex-direction: column;
@@ -353,26 +313,6 @@
                 padding: 0.75rem 1rem;
             }
             
-            .voting-container {
-                padding: 1.5rem;
-            }
-        }
-
-        /* Улучшенные тапы для мобильных */
-        @media (max-width: 768px) {
-            .vote-btn, .participation-btn, .tab-btn {
-                min-height: 44px;
-                padding: 12px 20px;
-            }
-            
-            nav ul li a {
-                padding: 10px 15px;
-                display: block;
-            }
-        }
-
-        /* Mobile fixes */
-        @media (max-width: 768px) {
             .container {
                 padding: 0 10px;
             }
@@ -392,58 +332,44 @@
                 font-size: 1rem;
             }
             
-            .voting-container {
-                padding: 1rem;
-                margin: 0 5px;
-            }
-            
             .participation-card {
                 padding: 1.5rem;
             }
         }
 
-        /* Footer styles */
+        /* Footer как в list-of-members и index */
         footer {
-            background: var(--light);
+            background: var(--dark);
             color: white;
-            padding: 2rem 0;
+            padding: 1.5rem 0;
             margin-top: 2rem;
         }
 
         .footer-content {
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            flex-wrap: wrap;
+            text-align: center;
+            gap: 0.5rem;
         }
 
         .footer-logo {
-			color: #343a40;
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .footer-links a {
-            color: grey;
+            color: white;
             text-decoration: none;
+            margin: 0 0.5rem;
         }
 
         .footer-links a:hover {
-            color: var(--accent);
+            text-decoration: underline;
         }
 
         .copyright {
-            width: 100%;
-            text-align: center;
-            margin-top: 1rem;
-            color: var(--gray);
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -474,12 +400,11 @@
     <!-- Main Content with Tabs -->
     <section id="main-content">
         <div class="container">
-            
-            
             <div class="tabs-container">
                 <div class="tabs-header">
                     <a href="index.html" class="tab-btn">Новости</a>
                     <button class="tab-btn active">Участие в жизни школы</button>
+                    <a href="list-of-members.html" class="tab-btn">Состав совета</a>
                 </div>
                 
                 <!-- Participation Tab -->
@@ -490,20 +415,23 @@
                         <div class="participation-card">
                             <div class="participation-icon">💡</div>
                             <h3 class="participation-title">Идеи и предложения</h3>
-                            <p>Предложите свои идеи по улучшению школьной жизни. Ваше мнение важно для нас!
-							
-							Также здесь вы можете предложить список песен для новогодней дискотеки. 
-							Пожалуйста, помимио списка песен с авторами, указывайте ваш класс. 
-							
-							Пожалуйста, придерживайтесь темы бота, иначе - блокировка на отправку.</p>
-                            <button class="participation-btn" onclick="window.open('https://t.me/Legendka_bot', '_blank')">Предложить идею</button>
+                            <p>
+                                Предложите свои идеи по улучшению школьной жизни. Ваше мнение важно для нас!<br><br>
+                                Также здесь вы можете предложить список песен для новогодней дискотеки. 
+                                Пожалуйста, помимо списка песен с авторами, указывайте ваш класс.<br><br>
+                                Пожалуйста, придерживайтесь темы бота, иначе возможна блокировка на отправку.
+                            </p>
+                            <button class="participation-btn" onclick="window.open('https://t.me/Legendka_bot', '_blank')">
+                                Предложить идею
+                            </button>
                         </div>
-                        
-                       
                     </div>
-                    
+                </div>
+            </div>
+        </div>
+    </section>
 
-    <!-- Footer -->
+    <!-- Footer (как на index и list-of-members) -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -512,31 +440,17 @@
                     <a href="https://sh13-velikij-novgorod-r49.gosweb.gosuslugi.ru/">О школе</a>
                     <a href="https://vk.com/club211597998">Группа ВК</a>
                 </div>
-                <div class="copyright">© 2002 Школа №13. Все права защищены.</div>
+                <div class="copyright">
+                    © 2002 Школа №13. Все права защищены.
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-    
-
-    
-
-        // Initialize when page loads
         document.addEventListener('DOMContentLoaded', function() {
             console.log('Participation page loaded successfully!');
-            
-           
-                    }
-                });
-            });
         });
     </script>
 </body>
-
 </html>
-
-					
-
-
-
